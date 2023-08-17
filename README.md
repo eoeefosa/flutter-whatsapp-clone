@@ -1,7 +1,8 @@
 # Flutter Whatsapp Clone
 
-Trying to recreated the whatsapp app with clean architeture
-Clean code case study
+Trying to recreate WhatsApp app with clean architeture.
+
+# Clean code case study series #clean
 
 # Introduction
 
