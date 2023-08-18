@@ -20,4 +20,27 @@ class GroupModel extends GroupEntity {
           description: description,
           adminId: adminIds,
         );
+
+  factory GroupModel.fromSnapshot(DocumentSnapshot snapshot) {
+    return GroupModel(
+      id: snapshot.get('id'),
+      groupName: snapshot.get('groupName'),
+      groupImage: snapshot.get('groupImage'),
+      createdAt: snapshot.get('createdAt'),
+      lastmessagesid: snapshot.get('lastmessagesid'),
+      description: snapshot.get('description'),
+      adminIds: snapshot.get('adminIds'),
+    );
+  }
+  Map<String, dynamic> toDocument() {
+    return {
+      "id": id,
+      "groupName": groupName,
+      "groupImage": groupName,
+      "createdAt": createdAt,
+      "lastmessagesid": lastmessagesid,
+      "description": description,
+      "adminIds": adminId
+    };
+  }
 }
