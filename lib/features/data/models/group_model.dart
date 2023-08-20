@@ -32,6 +32,38 @@ class GroupModel extends GroupEntity {
       adminIds: snapshot.get('adminIds'),
     );
   }
+  factory GroupModel.fromJson(Map<String, dynamic> map) {
+    return GroupModel(
+      id: map['id'] ?? "",
+      groupName: map['groupName'] ?? "",
+      groupImage: map['groupImage'] ?? "",
+      createdAt: map['createdAt'] ?? "",
+      lastmessagesid: map['lastmessagesid'] ?? "",
+      description: map['description'] ?? "",
+      adminIds: map['adminIds'] ?? "",
+    );
+  }
+  // you can do more with factory constructors
+  // factory User.fromJson(Map<String, dynamic> json) {
+  // String userName = json['name'];
+  // String userAlias = json['alias'];
+  // if (userName == null || userAlias == null) throw FormatException();
+  // userName = userName.toUpperCase();
+  // userAlias = userAlias.toUpperCase();
+  // return User(name: userName, alias: userAlias);
+//           }
+
+  factory GroupModel.fromEntity(GroupEntity entity) {
+    return GroupModel(
+      id: entity.id,
+      groupName: entity.groupName,
+      groupImage: entity.groupImage,
+      createdAt: entity.createdAt,
+      lastmessagesid: entity.lastmessagesid,
+      description: entity.description,
+      adminIds: entity.adminId,
+    );
+  }
   Map<String, dynamic> toDocument() {
     return {
       "id": id,
@@ -41,6 +73,18 @@ class GroupModel extends GroupEntity {
       "lastmessagesid": lastmessagesid,
       "description": description,
       "adminIds": adminId
+    };
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "id": '$id',
+      "groupName": '$groupName',
+      "groupImage": '$groupName',
+      "createdAt": '$createdAt',
+      "lastmessagesid": '$lastmessagesid',
+      "description": '$description',
+      "adminIds": '$adminId'
     };
   }
 }

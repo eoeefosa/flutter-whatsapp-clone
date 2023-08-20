@@ -1,6 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
+
+/// Call type can be voice or video call
+enum CallType { voice, video }
+/// CallStatus can be missed answered or declined
+enum CallStatus { missed, answered, declined }
+
 /// The call entity should
 /// have a unique id
 /// a caller
@@ -11,10 +17,6 @@ import 'package:equatable/equatable.dart';
 /// a status(missed, answered, declined)
 /// a call can be made between 2 users or within a
 /// group
-enum CallType { voice, video }
-
-enum CallStatus { missed, answered, declined }
-
 class CallEntity extends Equatable {
   final String? id;
   final String? callInitaitorId;

@@ -15,7 +15,22 @@ class CallModel extends CallEntity {
           callInitaitorId: callInitaitorId,
           callReciverId: callReciverId,
           calledAt: calledAt,
+          callType: callType,
           callStatus: callStatus,
           duration: duration,
         );
+
+  factory CallModel.fromJson(Map<String, dynamic> map) {
+    return CallModel(
+      id: map['id'],
+      callInitaitorId: map['callInitaitorId'],
+      callReciverId: map['callReciverId'],
+      calledAt: map['calledAt'],
+      callType: map['callType'],
+      callStatus: map['callStatus'],
+      duration: map['duration'],
+    );
+  }
+
+  factory CallModel.
 }
