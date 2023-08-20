@@ -78,13 +78,13 @@ class GroupModel extends GroupEntity {
 
   Map<String, dynamic> toJson() {
     return {
-      "id": '$id',
-      "groupName": '$groupName',
-      "groupImage": '$groupName',
-      "createdAt": '$createdAt',
-      "lastmessagesid": '$lastmessagesid',
-      "description": '$description',
-      "adminIds": '$adminId'
+      "id": id,
+      "groupName": groupName,
+      "groupImage": groupName,
+      "createdAt": createdAt,
+      "lastmessagesid": lastmessagesid,
+      "description": description,
+      "adminIds": adminId
     };
   }
 }

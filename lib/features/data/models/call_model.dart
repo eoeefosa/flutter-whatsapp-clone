@@ -20,6 +20,18 @@ class CallModel extends CallEntity {
           duration: duration,
         );
 
+  factory CallModel.fromsnapshot(DocumentSnapshot snapshot) {
+    return CallModel(
+      id: snapshot.get('id'),
+      callInitaitorId: snapshot.get('callInitaitorId'),
+      callReciverId: snapshot.get('callReciverId'),
+      calledAt: snapshot.get('calledAt'),
+      callType: snapshot.get('callType'),
+      callStatus: snapshot.get('callStatus'),
+      duration: snapshot.get('duration'),
+    );
+  }
+
   factory CallModel.fromJson(Map<String, dynamic> map) {
     return CallModel(
       id: map['id'],
@@ -32,5 +44,39 @@ class CallModel extends CallEntity {
     );
   }
 
-  factory CallModel.
+  factory CallModel.fromEntity(CallEntity entity) {
+    return CallModel(
+      id: entity.id,
+      callInitaitorId: entity.callInitaitorId,
+      callReciverId: entity.callReciverId,
+      calledAt: entity.calledAt,
+      callType: entity.callType,
+      callStatus: entity.callStatus,
+      duration: entity.duration,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "id": id,
+      "callInitaitorId": callInitaitorId,
+      "callReciverId": callReciverId,
+      "calledAt": calledAt,
+      "callType": callType,
+      "callStatus": callStatus,
+      "duration": duration
+    };
+  }
+   Map<String, dynamic> toDocument() {
+    return {
+      "id": id,
+      "callInitaitorId": callInitaitorId,
+      "callReciverId": callReciverId,
+      "calledAt": calledAt,
+      "callType": callType,
+      "callStatus": callStatus,
+      "duration": duration
+    };
+  }
 }
+
