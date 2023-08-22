@@ -28,7 +28,7 @@ class UserModel extends UserEntity {
       status: entity.status,
     );
   }
-  factory UserModel.fromDocument(DocumentSnapshot snapshot) {
+  factory UserModel.fromDocumentSnapShot(DocumentSnapshot snapshot) {
     return UserModel(
       id: snapshot.get('id'),
       about: snapshot.get('about'),
@@ -60,14 +60,4 @@ class UserModel extends UserEntity {
     };
   }
 
-  Map<String, dynamic> toDocument() {
-    return {
-      "id": id,
-      "about": about,
-      "name": name,
-      "phoneNumber": phoneNumber,
-      "profilePicture": profilePicture,
-      "status": status,
-    };
-  }
-}
+ }

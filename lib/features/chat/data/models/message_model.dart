@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_whatsapp_clone/features/domain/entities/message_entity.dart';
+import 'package:flutter_whatsapp_clone/features/chat/domain/entities/message_entity.dart';
 
 class MessageModel extends MessageEntity {
   const MessageModel({
@@ -22,7 +22,7 @@ class MessageModel extends MessageEntity {
           timestamp: timestamp,
         );
 
-  factory MessageModel.fromsnapshot(DocumentSnapshot snapshot) {
+  factory MessageModel.fromDocumentSnapShot(DocumentSnapshot snapshot) {
     return MessageModel(
       recipientid: snapshot.get('recipientid'),
       senderId: snapshot.get('senderId'),
@@ -72,16 +72,5 @@ class MessageModel extends MessageEntity {
     };
   }
 
-  Map<String, dynamic> toDocument() {
-    return {
-      "recipientid": recipientid,
-      "senderId": senderId,
-      "type": type,
-      "content": content,
-      "messageid": messageid,
-      "receiverName": receiverName,
-      "status": status,
-      "timestamp": timestamp,
-    };
-  }
+  
 }

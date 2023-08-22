@@ -1,11 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_whatsapp_clone/features/domain/entities/group_entity.dart';
+
+import '../../domain/entities/group_entity.dart';
+import '../../domain/entities/message_entity.dart';
 
 class GroupModel extends GroupEntity {
   const GroupModel({
     String? id,
     String? groupName,
     String? groupImage,
+    final List<MessageEntity>? messages,
     Timestamp? createdAt,
     String? lastmessagesid,
     String? description,
@@ -14,6 +17,7 @@ class GroupModel extends GroupEntity {
   }) : super(
           id: id,
           groupName: groupName,
+          messages: messages,
           groupImage: groupImage,
           createdAt: createdAt,
           lastmessagesid: lastmessagesid,
@@ -21,7 +25,7 @@ class GroupModel extends GroupEntity {
           adminId: adminIds,
         );
 
-  factory GroupModel.fromSnapshot(DocumentSnapshot snapshot) {
+  factory GroupModel.fromDocumentSnapShot(DocumentSnapshot snapshot) {
     return GroupModel(
       id: snapshot.get('id'),
       groupName: snapshot.get('groupName'),
@@ -64,17 +68,7 @@ class GroupModel extends GroupEntity {
       adminIds: entity.adminId,
     );
   }
-  Map<String, dynamic> toDocument() {
-    return {
-      "id": id,
-      "groupName": groupName,
-      "groupImage": groupName,
-      "createdAt": createdAt,
-      "lastmessagesid": lastmessagesid,
-      "description": description,
-      "adminIds": adminId
-    };
-  }
+  
 
   Map<String, dynamic> toJson() {
     return {

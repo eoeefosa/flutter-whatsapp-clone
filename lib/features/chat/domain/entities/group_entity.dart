@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
+import 'message_entity.dart';
+
 /// The group entity is an entity that has a
 /// unique id
 /// a name
@@ -17,15 +19,17 @@ class GroupEntity extends Equatable {
   final String? groupImage;
   final Timestamp? createdAt;
   final String? lastmessagesid;
+  final List<MessageEntity>? messages;
   final String? description;
   final List<String?>? adminId;
   final List<String?>? membersId;
 
-  const GroupEntity({
+  const GroupEntity( {
     this.id,
     this.groupName,
     this.groupImage,
     this.description,
+    this.messages,
     this.adminId,
     this.membersId,
     this.createdAt,
